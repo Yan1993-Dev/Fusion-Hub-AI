@@ -1,39 +1,32 @@
-import Link from 'next/link';
-
+// pages/login.tsx
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Вход в Fusion Hub</h2>
-        <form className="space-y-4">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md flex flex-col items-center">
+        <h1 className="text-3xl font-bold mb-6 text-center">Вход</h1>
+        <form className="w-full flex flex-col space-y-4">
+          <div className="flex flex-col">
+            <label htmlFor="email" className="mb-1 text-gray-700 font-medium">Email</label>
             <input
-              type="email"
               id="email"
-              className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
+              type="email"
               placeholder="Введите email"
+              className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Пароль</label>
+          <div className="flex flex-col">
+            <label htmlFor="password" className="mb-1 text-gray-700 font-medium">Пароль</label>
             <input
-              type="password"
               id="password"
-              className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
+              type="password"
               placeholder="Введите пароль"
+              className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
-          >
+          <button className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition">
             Войти
           </button>
         </form>
-        <p className="mt-4 text-center text-sm">
-          Нет аккаунта? <Link href="/register" className="text-blue-500 hover:underline">Регистрация</Link>
-        </p>
       </div>
     </div>
   );
