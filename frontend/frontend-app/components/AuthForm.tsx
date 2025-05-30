@@ -1,66 +1,51 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-interface AuthFormProps {
-  type: "login" | "register";
-}
-
-export default function AuthForm({ type }: AuthFormProps) {
-  const [form, setForm] = useState({ email: "", password: "", name: "", confirmPassword: "" });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(`${type} form data:`, form);
-  };
+export default function AuthForm() {
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-80 space-y-4">
-      {type === "register" && (
+    <section className="w-full bg-white rounded-3xl shadow-lg p-8">
+      <div className="flex mb-6 rounded-full overflow-hidden border border-indigo-600">
+        <button
+          className={`flex-1 py-2 text-lg font-semibold transition-all ${
+            isLogin ? 'bg-indigo-600 text-white' : 'bg-transparent text-indigo-600 hover:bg-indigo-50'
+          }`}
+          onClick={() => setIsLogin(true)}
+        >
+          Вход
+        </button>
+        <button
+          className={`flex-1 py-2 text-lg font-semibold transition-all ${
+            !isLogin ? 'bg-indigo-600 text-white' : 'bg-transparent text-indigo-600 hover:bg-indigo-50'
+          }`}
+          onClick={() => setIsLogin(false)}
+        >
+          Регистрация
+        </button>
+      </div>
+
+      <form className="space-y-5">
+        {!isLogin && (
+          <input
+            type="text"
+            placeholder="Имя"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-indigo-600"
+          />
+        )}
         <input
-          type="text"
-          name="name"
-          placeholder="Имя"
-          value={form.name}
-          onChange={handleChange}
-          className="border p-2 w-full"
-          required
+          type="email"
+          placeholder="Email"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-indigo-600"
         />
-      )}
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={handleChange}
-        className="border p-2 w-full"
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Пароль"
-        value={form.password}
-        onChange={handleChange}
-        className="border p-2 w-full"
-        required
-      />
-      {type === "register" && (
         <input
           type="password"
-          name="confirmPassword"
-          placeholder="Подтвердите пароль"
-          value={form.confirmPassword}
-          onChange={handleChange}
-          className="border p-2 w-full"
-          required
+          placeholder="Пароль"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-indigo-600"
         />
-      )}
-      <button type="submit" className="bg-blue-500 text-white w-full py-2 rounded">
-        {type === "login" ? "Войти" : "Зарегистрироваться"}
-      </button>
-    </form>
+        <button type="submit" className="w-full bg-indigo-600 text-white py-3 rounded-lg text-lg font-bold hover:bg-indigo-500 transition">
+          {isLogin ? 'Войти' : 'Зарегистрироваться'}
+        </button>
+      </form>
+    </section>
   );
 }
