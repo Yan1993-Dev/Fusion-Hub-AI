@@ -1,11 +1,7 @@
 export const Marketing = () => (
-  <section className="w-full flex flex-col justify-center">
-    <h2 className="text-2xl font-bold mb-4">Управляй данными умно</h2>
-    <p className="text-gray-600 mb-4">
-      Fusion Hub AI помогает тебе управлять данными и бизнесом.
-    </p>
-    <a href="#" className="text-indigo-600 font-semibold hover:underline">
-      Узнать больше
-    </a>
+  <section className="text-center md:text-left space-y-4 max-w-md">
+    <h1 className="text-4xl font-bold text-gray-900">Управляй данными умно</h1>
+    <p className="text-gray-600">Fusion Hub AI помогает тебе управлять данными и бизнесом.</p>
+    <a href="#" className="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-500">Узнать больше</a>
   </section>
 );

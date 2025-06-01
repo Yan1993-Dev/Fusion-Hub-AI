@@ -6,9 +6,3 @@ body {
   @apply bg-gray-50 text-gray-900;
   font-family: 'Inter', sans-serif;
 }
-/* globals.css */
-.logo {
-  max-width: 150px;  /* или любой удобный размер */
-  height: auto;
-  margin: 0 auto;  /* центрирование */
-}
